@@ -1,12 +1,16 @@
 // importing the dependencies
 const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const helmet = require('helmet');
 const morgan = require('morgan');
 const writer = require('csv-to-sql-script');
 const sqlite3 = require('sqlite3');
 const fs = require("fs");
+
+const app = express();
+const dfEnd = [];
+const fullEnd = [];
+
+// adding morgan to log HTTP requests
+app.use(morgan('combined'));
 
 writer.writeMigration('resources/codefoobackend_cfgames.csv', 'resources/dbinfo.sql', 'media');
 const commands = fs.readFileSync("resources/dbinfo.sql").toString();
@@ -18,32 +22,27 @@ db.serialize(() => {
   db.run("DROP TABLE IF EXISTS media");
   db.run(commandsLine1);
   db.run(commandsLine2);
-  db.each("SELECT rowid AS id, name FROM media", (err, row) => {
-    console.log(row.id + ": " + row.name);
+  db.each("SELECT rowid as id, name FROM media", (err, row) => {
+    dfEnd.push({id: row.id, name: row.name});
   });
+  db.each("SELECT * FROM media", (err, row) => {
+    fullEnd.push({id: row.id, media_type: row.media_type, name: row.name, short_name: row.short_name, long_description: row.long_description, short_description: row.short_description, created_at: row.created_at, updated_at: row.updated_at, review_url: row.review_url, review_score: row.review_score, slug: row.slug, genres: row.genres, created_by: row.created_by, published_by: row.published_by, franchises: row.franchises, regions: row.regions});
+  })
 })
 
-const ads = "Hello";
-// defining the Express app
-const app = express();
-// defining an array to work as the database (temporary solution)
 
-
-// adding Helmet to enhance your Rest API's security
-app.use(helmet());
-
-// using bodyParser to parse JSON bodies into JS objects
-app.use(bodyParser.json());
-
-// enabling CORS for all requests
-app.use(cors());
-
-// adding morgan to log HTTP requests
-app.use(morgan('combined'));
 
 // defining an endpoint to return all ads
 app.get('/', (req, res) => {
-  res.send(ads);
+    res.send(JSON.stringify(dfEnd));
+});
+
+app.get('/full', (req, res) => {
+  res.send(JSON.stringify(fullEnd));
+});
+
+app.get('/full/:mediaId', (req, res) => {
+  res.send(JSON.stringify(fullEnd.find(item => item.id === req.params.mediaId)))
 });
 
 // starting the server
