@@ -65,5 +65,5 @@ Gives JSON objects with only the fields not pertaining to the review of the medi
 /info/genre/(desired genre) - Returns every item of a certain genre. Examples include http://localhost:3000/info/genre/Action or http://localhost:3000/info/genre/RPG.
 
 ## Notes
--The rewriting of data may take a few seconds, so the program may initially not return anything. Once the data is loaded, however, simply resending the request should fix the issue.
+-The rewriting of data may take a few seconds, so the program may initially not return anything. Once the data is loaded, however, simply resending the request should fix the issue.<br>
 -A possible point of failure for the program is the use of fs.watchFile() function, which is not compatible with every platform. It’s necessary to make sure that the dbinfo.sql has been loaded with commands before it is executed by sqlite.
