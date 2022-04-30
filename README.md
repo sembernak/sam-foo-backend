@@ -10,11 +10,17 @@ Additionally, my skills as a student and worker extend beyond just coding. Teamw
 If all this sounds like a good fit, you can be sure that you’ll have my best effort for this program.
 
 # Hisui’s New Power Plant
+Here's my plan for creating Jubilife village's new power plant:
 1. Establish the electricity needs of Jubilife village - What is probably the first step in creating any power plant (Pokemon powered or not) is finding the demand of electricity that needs to be fulfilled. Getting this information will require a few steps:
+
     a. Draw upon currently existing knowledge of Jubilife’s energy usage, whether it be from the library, energy companies, etc.
+
     b. If the data from step A is not sufficient to draw conclusions, conduct a study into how much the citizens of the village need.
+
     c. Use the data collected to find a minimum value of megawatts needed for both current and future energy needs.
 2. Look into the energy generation of Voltorbs - This will also come in a few steps:
+
     a. If a couple Voltorbs aren’t on hand, a few need to be caught for testing purposes.
+
     b. Look into the factors that affect how much energy Voltorbs produce, such as energy collection method, what kind of food they’re given, etc. Whatever the most practical method is will be the baseline for how much energy a Voltorb will be expected to produce.
 3. Catch your Voltorbs - With the energy needs of Jubilife village established, as well as how much each Voltorb produces, all that’s left to do is to catch the right number and hook them up to the grid.
