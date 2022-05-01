@@ -29,9 +29,9 @@ For my application I have created a simple API with the Express Node.js framewor
 As a prerequisite, the npm file management system needs to be installed in order to build the project.
 
 Once downloaded, open the main project folder in some terminal, and run the command:<br>
-'npm install'<br>
+`npm install`<br>
 This should install all of the needed dependencies and build the App. To run the program:<br>
-'node src'<br>
+`node src`<br>
 The App should now be listening for a request on http://localhost:3000/. This should be accessible from any browser.
 
 
